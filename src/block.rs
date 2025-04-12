@@ -13,27 +13,17 @@ pub struct Block {
 }
 
 impl Block {
-    pub fn new(index: u64, data: String, previous_hash: String) -> Self {
-        let timestamp = Utc::now().to_rfc3339();
-        let mut nonce = 0;
-        let mut hash = String::new();
-
-        loop {
-            hash = Block::calculate_hash(index, &timestamp, &data, &previous_hash, nonce);
-            if hash.starts_with("0000") {
-                break;
-            }
-            nonce += 1;
-        }
-
+    pub fn new(timestamp: String, index: u64, data: String, previous_hash: String,nonce: u64) -> Self {
+        let  hash = Block::calculate_hash(index, &timestamp, &data, &previous_hash, nonce);
         Block {
-            index,
+            index, 
             timestamp,
             data,
             previous_hash,
             hash,
-            nonce,
+            nonce
         }
+
     }
 
     pub fn calculate_hash(index: u64, timestamp: &str, data: &str, previous_hash: &str, nonce: u64) -> String {
@@ -41,6 +31,9 @@ impl Block {
         let mut hasher = Sha256::new();
         hasher.update(input);
         format!("{:x}", hasher.finalize())
+    }
+    pub fn is_valid(&self) -> bool {
+        self.hash.starts_with("00000")
     }
 
 

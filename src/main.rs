@@ -4,14 +4,16 @@ mod miner;
 mod network;
 mod transaction;
 mod wallet;
+use miner::mine_block;
 
 fn main() {
-    println!("RustChain CLI running...");
+    // Example setup
+    let index = 0;
+    let data = "Genesis Block".to_string();
+    let previous_hash = "0".to_string();
 
-    // Create a block
-    let mut block = block::Block::new(0, "My Block".to_string(), "0x00".to_string());
-    println!("My Block:\n{}", block);
-    // Example CLI stub
-    // let mut blockchain = Blockchain::new();
-    // blockchain.add_block("Some data".to_string());
+    // Call miner to mine a new block
+    let mined_block = mine_block(index, data, previous_hash);
+
+    println!("🧱 Mined Block: {:#?}", mined_block);
 }
