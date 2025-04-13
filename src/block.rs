@@ -33,7 +33,7 @@ impl Block {
         format!("{:x}", hasher.finalize())
     }
     pub fn is_valid(&self) -> bool {
-        self.hash.starts_with("00000")
+        self.hash.starts_with("0000")
     }
 
 

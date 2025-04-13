@@ -5,7 +5,8 @@ pub struct Blockchain {
 }
 
 impl Blockchain {
-    // I dont think this should permanantly be a public function. This would allow everyone to start a new chain? 
+    // I dont think this should permanantly be a public function. This would allow everyone to start a new chain. But dont know how to do it 
+    //otherwise right now 
     pub fn new(genesis: Block) -> Self {
         Blockchain { 
  

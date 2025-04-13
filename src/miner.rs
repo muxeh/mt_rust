@@ -1,4 +1,6 @@
 use crate::block::Block;
+use crate::blockchain::Blockchain;
+
 use chrono::Utc;
 
 
