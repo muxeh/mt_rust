@@ -51,7 +51,6 @@ fn main() {
         } else {
             println!("❌ Block rejected!");
         }
-    }
-    
+    }  
 }
 
